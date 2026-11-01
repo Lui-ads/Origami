@@ -1,0 +1,364 @@
+/* 
+Considerações: Fiz 70% desse site web imitando o Instagram, fiz todo o HTML e a maior parte do CSS, porém
+tive que pedir ajuda as IAs, para conseguir formatar, arrumar e fazer com que minhas ideias ficassem como
+eu queria
+
+*/
+
+
+/* Body / Grid principal */
+body {
+    background-color: rgb(82, 82, 82); /* fundo cinza escuro */
+    display: grid; /* ativa o layout em grid */
+    grid-template-columns: 70px minmax(600px, 1fr) 400px 220px; /* 4 colunas: menu, feed, lateral direita, espaço extra */
+    grid-template-rows: 140px auto auto; /* 3 linhas: topo, feed, resto */
+    margin: 0; /* remove margem padrão */
+    padding: 0; /* remove padding padrão */
+    align-items: start; /* alinha itens ao topo */
+}
+
+
+/* Barra lateral L */
+#barra_lateral_L {
+    display: flex; /* layout flexível */
+    flex-direction: column; /* itens em coluna */
+    justify-content: left; /* alinha à esquerda */
+    padding-top: 1%; /* espaço no topo */
+    padding-left: 1%; /* espaço à esquerda */
+
+    position: fixed; /* fixa na tela ao rolar */
+    top: 0; /* cola no topo */
+    left: 0; /* cola à esquerda */
+    height: 100vh; /* ocupa toda a altura da tela */
+    overflow-y: auto; /* rolagem vertical se necessário */
+}
+
+#barra_lateral_L img {
+    width: 45px; /* largura fixa dos ícones */
+    height: auto; /* altura proporcional */
+}
+
+#central img {
+    border-radius: 100%; /* deixa a imagem redonda */
+}
+
+#barra_lateral_L p {
+    color: black; /* texto dos parágrafos em preto */
+}
+
+#simbolos img:hover {
+    transform: scale(1.9); /* aumenta o ícone ao passar o mouse */
+    cursor: pointer; /* cursor de clique */
+}
+
+
+/* Barra topo / Stories */
+#barra_topo {
+    grid-column: 2; /* posiciona na coluna 2 do grid */
+    grid-row: 1; /* posiciona na linha 1 */
+    width: 500px; /* largura fixa */
+    margin: 0 auto; /* centraliza horizontalmente */
+    padding-top: 10px; /* espaço no topo */
+}
+
+.storys {
+    display: flex; /* layout flexível */
+    flex-direction: row; /* itens em linha */
+    align-items: center; /* centraliza verticalmente */
+    justify-content: center; /* centraliza horizontalmente */
+    gap: 10px; /* espaço entre os itens */
+    padding-top: 2%; /* espaço no topo */
+}
+
+#barra_topo img {
+    width: 100px; /* largura dos stories */
+    height: 100px; /* altura dos stories */
+    object-fit: cover; /* corta a imagem para preencher */
+    border-radius: 100%; /* deixa redondo */
+    border: 2px solid #1e00b6; /* borda azul ao redor */
+}
+
+/* Barra central / Feed */
+#barra_central {
+    grid-column: 2; /* coluna central */
+    grid-row: 2; /* linha do feed */
+    width: 600px; /* largura fixa */
+    margin: 0 auto; /* centraliza */
+    padding-top: 40px; /* espaço acima */
+    padding-bottom: 20%; /* espaço abaixo (para não colar no fim) */
+}
+
+/* Postagens */
+#postagens {
+    display: flex; /* layout flexível */
+    flex-direction: row; /* itens em linha */
+    flex-wrap: wrap; /* quebra linha quando necessário */
+    align-items: flex-start; /* alinha ao topo */
+    gap: 0; /* sem espaço entre itens */
+}
+
+/* Foto de perfil do post */
+#postagens > img:nth-of-type(odd) {
+    width: 45px; /* largura da foto */
+    height: 45px; /* altura da foto */
+    flex: 0 0 45px; /* não cresce nem encolhe, base 45px */
+    object-fit: cover; /* corta para preencher */
+    border-radius: 50%; /* redonda */
+    margin: 0 10px 10px 0; /* espaço à direita e abaixo */
+}
+
+/* Nome do usuário */
+#postagens > p {
+    width: 545px; /* largura do nome */
+    height: 45px; /* altura do nome */
+    display: flex; /* flex para centralizar texto */
+    align-items: center; /* centraliza verticalmente */
+    margin: 0 0 10px; /* espaço abaixo */
+    color: white; /* texto branco */
+}
+
+/* Imagem da publicação */
+#postagens > img:nth-of-type(even) {
+    width: 545px; /* largura da imagem */
+    height: 600px; /* altura da imagem */
+    flex: 0 0 545px; /* base fixa de 545px */
+    object-fit: cover; /* corta para preencher */
+    object-position: center; /* centraliza o corte */
+    display: block; /* exibe como bloco */
+    border-radius: 8%; /* cantos arredondados */
+    margin: 0 0 20px; /* espaço abaixo */
+}
+
+/* Ações do post */
+#postagens .acoes {
+    width: 55px; /* largura da coluna de ícones */
+    height: 600px; /* mesma altura da imagem */
+    flex: 0 0 55px; /* base fixa */
+    display: flex; /* flex para empilhar ícones */
+    flex-direction: column; /* ícones em coluna */
+    align-items: center; /* centraliza horizontalmente */
+    justify-content: flex-start; /* alinha ao topo */
+    gap: 20px; /* espaço entre ícones */
+    padding-top: 10px; /* espaço no topo */
+}
+
+/* Ícones de ações */
+#postagens .acoes img {
+    width: 28px; /* largura do ícone */
+    height: 28px; /* altura do ícone */
+    flex: 0 0 28px; /* base fixa */
+    object-fit: contain; /* mantém proporção sem cortar */
+    border-radius: 0; /* sem arredondamento */
+    margin: 0; /* remove margem */
+}
+
+#postagens .acoes img:hover {
+    transform: scale(1.5); /* aumenta ao passar o mouse */
+    cursor: pointer; /* cursor de clique */
+}
+
+/* Barra lateral R */
+#barra_lateral_R {
+    display: flex; /* layout flexível */
+    flex-direction: column; /* itens em coluna */
+    grid-column: 3; /* coluna 3 do grid */
+    grid-row: 1 / 3; /* ocupa linhas 1 e 2 */
+    padding-top: 5%; /* espaço no topo */
+}
+
+/* Perfil */
+#status {
+    display: grid; /* grid para alinhar foto e nome */
+    grid-template-columns: 60px 1fr; /* coluna da foto e coluna do nome */
+    align-items: center; /* centraliza verticalmente */
+}
+
+/* Foto do perfil */
+#ima {
+    grid-column: 1; /* primeira coluna */
+    grid-row: 1; /* primeira linha */
+    width: 50px; /* largura */
+    height: 50px; /* altura */
+    border-radius: 50%; /* redonda */
+    overflow: hidden; /* corta o que ultrapassar */
+}
+
+#barra_lateral_R #ima img {
+    width: 100%; /* ocupa toda a largura */
+    height: 100%; /* ocupa toda a altura */
+    object-fit: cover; /* corta para preencher */
+    border-radius: 50%; /* redonda */
+    margin: 0; /* remove margem */
+}
+
+/* Nome do perfil */
+#status > p:first-of-type {
+    grid-column: 2; /* segunda coluna */
+    grid-row: 1; /* primeira linha */
+    margin: 0; /* remove margem */
+    color: white; /* texto branco */
+}
+
+/* Estatísticas */
+#status_2 {
+    grid-column: 1 / 3; /* ocupa as duas colunas */
+    grid-row: 2; /* segunda linha */
+    display: flex; /* layout flexível */
+    flex-wrap: wrap; /* quebra linha */
+    justify-content: center; /* centraliza */
+    text-align: center; /* texto centralizado */
+    gap: 5px; /* espaço entre itens */
+}
+
+#status_2 p {
+    margin: 8px 0; /* espaço vertical */
+    color: white; /* texto branco */
+}
+
+/* Followers e Following */
+#status_2 p:nth-child(1),
+#status_2 p:nth-child(2) {
+    order: 1; /* aparecem primeiro */
+    flex: 1; /* dividem o espaço igualmente */
+}
+
+/* Posts centralizado */
+#status_2 p:nth-child(3) {
+    order: 2; /* aparece depois */
+    flex-basis: 100%; /* ocupa linha inteira */
+    text-align: center; /* centraliza o texto */
+}
+
+/* Grade de posts da lateral */
+#posts {
+    grid-column: 1 / 3; /* ocupa as duas colunas */
+    grid-row: 3; /* terceira linha */
+    display: grid; /* layout em grid */
+    grid-template-columns: repeat(2, 1fr); /* duas colunas iguais */
+    gap: 8px; /* espaço entre as fotos */
+}
+
+#barra_lateral_R #posts img {
+    width: 100%; /* ocupa toda a largura da célula */
+    height: 110px; /* altura fixa */
+    object-fit: cover; /* corta para preencher */
+    object-position: center; /* centraliza o corte */
+    margin: 0; /* remove margem */
+    border-radius: 11%; /* cantos arredondados */
+}
+
+#posts img:hover {
+    transform: scale(1.9); /* aumenta ao passar o mouse */
+    cursor: pointer; /* cursor de clique */
+}
+
+/* Barra de mensagem */
+#barra_mensagem {
+    display: flex; /* layout flexível */
+    flex-direction: row; /* itens em linha */
+    align-items: center; /* centraliza verticalmente */
+    justify-content: center; /* centraliza horizontalmente */
+    gap: 10px; /* espaço entre itens */
+
+    position: fixed; /* fixa na tela */
+    bottom: 20px; /* 20px do fundo */
+    right: 25px; /* 25px da direita */
+
+    background-color: #4c4c4c; /* fundo cinza */
+    border: 1px solid #303238; /* borda fina escura */
+    border-radius: 50px; /* cantos bem arredondados (pílula) */
+
+    padding: 12px 20px; /* espaço interno */
+    width: fit-content; /* largura ajustada ao conteúdo */
+    z-index: 1000; /* fica acima dos outros elementos */
+}
+
+/* Ícone de mensagem */
+#barra_mensagem img:first-of-type {
+    order: 1; /* primeiro item */
+    width: 28px; /* largura do ícone */
+    height: 28px; /* altura do ícone */
+    object-fit: contain; /* mantém proporção */
+}
+
+/* Texto Messages */
+#barra_mensagem p {
+    order: 2; /* segundo item */
+    color: white; /* texto branco */
+    font-family: Arial, sans-serif; /* fonte Arial */
+    font-size: 18px; /* tamanho do texto */
+    font-weight: bold; /* negrito */
+    margin: 0; /* remove margem */
+}
+
+/* Hover imagens de mensagem */
+#barra_mensagem img:hover {
+    transform: scale(1.4); /* aumenta ao passar o mouse */
+    cursor: pointer; /* cursor de clique */
+}
+
+/* Fotos dos usuários na barra de mensagem */
+#barra_mensagem img:not(:first-of-type) {
+    order: 3; /* vêm depois do texto */
+    width: 40px; /* largura da foto */
+    height: 40px; /* altura da foto */
+    object-fit: cover; /* corta para preencher */
+    border-radius: 100%; /* redonda */
+}
+
+/* Footer */
+footer {
+    position: absolute;
+    top: 620px;
+    right: 215px;
+    width: 400px; /* era 300px — aumente para caber os dois links */
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+    color: white;
+    border-top: 3px solid black;
+}
+footer a {
+    display: inline-block;
+    margin-top: 5%;
+    color: white;
+    text-decoration: none;
+}
+footer a:hover{
+    font-size: 150%;
+    color: chartreuse;
+}
+
+/* Parte feita toda por IA para deixar o site legal nos celulares */
+@media screen and (min-width: 769px) and (max-width: 1100px) {
+
+    body {
+        grid-template-columns: 60px minmax(0, 1fr);
+        grid-template-rows: 120px auto auto;
+    }
+
+    #barra_lateral_R {
+        display: none;
+    }
+
+    #barra_topo {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    #barra_central {
+        width: 100%;
+        max-width: 600px;
+        box-sizing: border-box;
+    }
+
+    #postagens {
+        justify-content: center;
+    }
+
+    footer {
+        position: static;
+        margin: 30px auto;
+    }
+}
